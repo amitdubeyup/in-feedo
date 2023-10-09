@@ -1,0 +1,25 @@
+{
+  "name": "infeedo",
+  "version": "1.0.0",
+  "description": "Assignment for the job!",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "main": "app.js",
+  "start": "node app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "App is working fine!"
+  },
+  "author": "Amit Dubey",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.1",
+    "mongoose": "^5.11.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
