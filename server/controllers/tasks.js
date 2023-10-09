@@ -79,7 +79,7 @@ const fetchTask = async (req, res) => {
 const metricTask = async (req, res) => {
     try {
         const result = await TasksModal.find({});
-        const final = [];
+        const final = new Array(12).fill(null);
         result.forEach((el, i) => {
             const date = new Date(el.created_at);
             const month = date.getMonth();
@@ -94,14 +94,14 @@ const metricTask = async (req, res) => {
                     }
                 };
             } else {
-                final.push({
+                final[month] = {
                     date: `${months[month]} 2023`,
                     metrics: {
                         open_tasks: el?.open_tasks,
                         inprogress_tasks: el?.inprogress_tasks,
                         completed_tasks: el?.completed_tasks,
                     }
-                });
+                };
             }
         });
         return res.send({
@@ -110,7 +110,6 @@ const metricTask = async (req, res) => {
             data: final.filter((el) => el)
         });
     } catch (error) {
-        console.log(error);
         return res.send({
             success: false,
             message: error?.message ?? 'Unable to fetch task metric.'
