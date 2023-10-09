@@ -17,7 +17,7 @@
 Clone the repository:
 
 ```bash
-$ git clone https://github.com/amitdubeyup/infeedo
+$ git clone https://github.com/amitdubeyup/infeedo.git
 ```
 
 Goto project directory:
@@ -43,11 +43,6 @@ $ npm start
 
 ## REST APIs
 
-  There is two part to REST APIs,
-
-  1. User Details
-
-  2. InFeedo Details
 
   The REST APIs to the infeedo app are described below.
 
