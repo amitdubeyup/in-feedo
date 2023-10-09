@@ -2,9 +2,6 @@
 
   The project "InFeedo App" is an app for showing the task details.
   
-### Live App URL: https://infeedo.onrender.com
-
-
 ## Tech Stack
 
   1. NodeJS (Version: 14+)
