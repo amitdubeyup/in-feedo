@@ -1,5 +1,6 @@
 const TasksModal = require('../modals/tasks');
 const ObjectId = require('mongoose').Types.ObjectId;
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const createTask = async (req, res) => {
     try {
@@ -77,14 +78,39 @@ const fetchTask = async (req, res) => {
 
 const metricTask = async (req, res) => {
     try {
-        const query = {};
-        const result = await TasksModal.find(query);
+        const result = await TasksModal.find({});
+        const final = [];
+        result.forEach((el, i) => {
+            const date = new Date(el.created_at);
+            const month = date.getMonth();
+            const index = final.findIndex((el) => el?.date == `${months[month]} 2023`);
+            if (index > -1) {
+                final[index] = {
+                    date: final[index].date,
+                    metrics: {
+                        open_tasks: Number(final[index].metrics.open_tasks) + Number(el?.open_tasks),
+                        inprogress_tasks: Number(final[index].metrics.inprogress_tasks) + Number(el?.inprogress_tasks),
+                        completed_tasks: Number(final[index].metrics.completed_tasks) + Number(el?.completed_tasks),
+                    }
+                };
+            } else {
+                final.push({
+                    date: `${months[month]} 2023`,
+                    metrics: {
+                        open_tasks: el?.open_tasks,
+                        inprogress_tasks: el?.inprogress_tasks,
+                        completed_tasks: el?.completed_tasks,
+                    }
+                });
+            }
+        });
         return res.send({
             success: true,
             message: 'Task metric fetched successfully.',
-            data: result
+            data: final.filter((el) => el)
         });
     } catch (error) {
+        console.log(error);
         return res.send({
             success: false,
             message: error?.message ?? 'Unable to fetch task metric.'
