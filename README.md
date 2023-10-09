@@ -138,26 +138,24 @@ $ npm start
   URL: http://localhost:3000/api/tasks/metric
   Response: {
     "success": true,
-    "message": "Task fetched successfully.",
-    "have_prev": false,
-    "have_next": true,
+    "message": "Task metric fetched successfully.",
     "data": [
-        {
-            "open_tasks": 10,
-            "inprogress_tasks": 30,
-            "completed_tasks": 10,
-            "_id": "652409e4fa1d2f3c56657ca3",
-            "created_at": "2023-10-09T14:10:44.405Z",
-            "updated_at": "2023-10-09T14:10:44.405Z"
-        },
-        {
-            "open_tasks": 10,
-            "inprogress_tasks": 10,
-            "completed_tasks": 10,
-            "_id": "652409e3fa1d2f3c56657ca1",
-            "created_at": "2023-10-09T14:10:43.454Z",
-            "updated_at": "2023-10-09T14:10:43.454Z"
+      {
+        "date": "Jan 2023",
+        "metrics": {
+          "open_tasks": 20,
+          "inprogress_tasks": 20,
+          "completed_tasks": 20
         }
+      },
+      {
+        "date": "Feb 2023",
+        "metrics": {
+          "open_tasks": 30,
+          "inprogress_tasks": 30,
+          "completed_tasks": 30
+        }
+      }
     ]
   }
  ```
